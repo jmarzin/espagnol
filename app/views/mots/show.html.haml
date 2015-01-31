@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %b Catégorie:
+  = @mot.category.numero_description
+%p
+  %b Niveau de langue:
+  = @mot.niveau
+%p
+  %b Mot directeur:
+  = @mot.mot_directeur
+%p
+  %b Francais:
+  = @mot.francais
+%p
+  %b Espagnol:
+  = @mot.espagnol
+-if user_signed_in?
+  %p
+    %b Compteur:
+    = @mot.scores_mots.where(user_id: current_user.id).first.compteur
+
+-if @peut_corriger
+  = link_to 'Corr', edit_mot_path(@mot)
+  \|
+-if @peut_supprimer
+  = button_to 'Nouveau', {action: 'new'}, method: :get, autofocus: true
+  \|
+= link_to 'Retour', mots_path

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Numero:
+  = @category.numero
+%p
+  %b Description:
+  = @category.description
+%table#category
+  %tr
+    %th Français
+    %th espagnol
+
+  -@category.mots.order('mot_directeur').each do |mot|
+    %tr
+      %td=mot.francais
+      %td=mot.espagnol
+
+= link_to 'Corr', edit_category_path(@category)
+\|
+= link_to 'Retour', categories_path

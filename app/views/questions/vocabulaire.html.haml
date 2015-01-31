@@ -1,0 +1,8 @@
+=form_tag('verification')
+
+-if session[:erreurs_mots_traitees]
+  %h1 Question de vocabulaire au hasard
+-else
+  %h1 Question de vocabulaire : erreurs récentes
+
+= render 'commun'

@@ -1,0 +1,31 @@
+%h1 Liste des verbes
+%p#notice= notice
+
+%table#verbe
+  %tr
+    %th Infinitif
+    %th Compteur
+    %th Créé le
+    %th Modifié le
+    %th
+    -if @peut_corriger
+      %th
+    -if @peut_supprimer
+      %th
+
+  - @verbes.each do |verbe|
+    %tr
+      %td= verbe.infinitif
+      %td= verbe.total_compteur
+      %td= verbe.created_at.strftime('%Y/%m/%d')
+      %td= verbe.updated_at.strftime('%Y/%m/%d')
+      %td= link_to 'Voir', verbe
+      -if @peut_corriger
+        %td= link_to 'Corr', edit_verbe_path(verbe)
+      -if @peut_supprimer
+        %td= link_to 'Supp', verbe, :method => :delete, :data => { :confirm => 'Supprimer ?' }
+
+%br
+= paginate @verbes
+-if @peut_supprimer
+  = link_to 'Nouveau', new_verbe_path

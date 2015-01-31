@@ -1,0 +1,8 @@
+=form_tag('verification')
+
+-if session[:erreurs_formes_traitees]
+  %h1 Question de conjugaison au hasard
+-else
+  %h1 Question de conjugaison : erreurs récentes
+
+= render 'commun'

@@ -1,0 +1,55 @@
+= form_for @verbe do |f|
+  - if @verbe.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@verbe.errors.count, "erreur")} : le verbe n'a pas pu être sauvegardé."
+      %ul
+        - @verbe.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :infinitif
+    = f.text_field :infinitif,:disabled => !(@peut_supprimer)
+
+    -i = 0
+
+    %table#saisie_verbe
+      %tr
+        %th#t
+        %th#p 1ère p. sing.
+        %th#c
+        %th#p 2ème p. sing.
+        %th#c
+        %th#p 3ème p. sing.
+        %th#c
+        %th#p 1ère p. plur.
+        %th#c
+        %th#p 2ème p. plur.
+        %th#c
+        %th#p 3ème p. plur.
+        %th#c
+      %tr
+      = f.fields_for :formes do |formes_form|
+        -if i/6*6 == i or i == 49
+          %tr{class: "#{cycle('pair','impair')}"}
+          -texte=Forme::FORMES[i][0]
+          %td= formes_form.label :espagnol, if texte.end_with?('.s1') then texte[0..-4] else texte end
+        -if @peut_supprimer or formes_form.object.espagnol != ''
+          %td= formes_form.text_field :espagnol, size: 20, class: 'espagnol', :disabled => !(@peut_supprimer)
+        -else
+          %td.espagnol
+        =formes_form.hidden_field :rang_forme
+        -aucune_ligne = true
+        = formes_form.fields_for :scores_formes do |scores_formes|
+          -if scores_formes.object.user_id == current_user.id
+            -aucune_ligne = false
+            %td= scores_formes.number_field :compteur, class: 'compteur'
+            =scores_formes.hidden_field :user_id
+        -if aucune_ligne
+          %td.compteur
+        -i+=1
+
+
+  %br
+
+  .actions
+    = f.submit 'Enregistrer'
