@@ -96,16 +96,16 @@ class Forme < ActiveRecord::Base
     Forme.order(:verbe_id, :rang_forme).each do |forme|
       if forme.rang_forme <= 23 then
         i = forme.rang_forme + 3
-      elsif forme.rang_forme <= 35 then
-        i = forme.rang_forme + 9
-      elsif forme.rang_forme <= 36 then
-        i = 0
-      elsif forme.rang_forme <= 41 then
-        i = forme.rang_forme + 8
       elsif forme.rang_forme <= 47 then
-        i = forme.rang_forme - 17
+        i = forme.rang_forme + 9
+      elsif forme.rang_forme <= 48 then
+        i = 0
+      elsif forme.rang_forme <= 53 then
+        i = forme.rang_forme + 8
+      elsif forme.rang_forme <= 59 then
+        i = forme.rang_forme - 29
       else
-        i = forme.rang_forme - 47
+        i = forme.rang_forme - 59
       end
       if i > 0 then
         liste << [forme.verbe_id, i, forme.espagnol]
@@ -119,16 +119,16 @@ class Forme < ActiveRecord::Base
     Forme.order(:verbe_id, :rang_forme).each do |forme|
       if forme.rang_forme <= 23 then
         i = forme.rang_forme + 3
-      elsif forme.rang_forme <= 35 then
-        i = forme.rang_forme + 9
-      elsif forme.rang_forme <= 36 then
-        i = 0
-      elsif forme.rang_forme <= 41 then
-        i = forme.rang_forme + 8
       elsif forme.rang_forme <= 47 then
-        i = forme.rang_forme - 15
+        i = forme.rang_forme + 9
+      elsif forme.rang_forme <= 48 then
+        i = 0
+      elsif forme.rang_forme <= 53 then
+        i = forme.rang_forme + 8
+      elsif forme.rang_forme <= 59 then
+        i = forme.rang_forme - 27
       else
-        i = forme.rang_forme - 47
+        i = forme.rang_forme - 59
       end
       if i > 0 then
         liste << [forme.id, forme.verbe_id, i, forme.espagnol]
