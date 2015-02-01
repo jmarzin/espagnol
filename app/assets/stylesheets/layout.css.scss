@@ -1,7 +1,7 @@
 #page_header {
   table {
     height: 50px;
-    background-image: linear-gradient(to right, #009246, #F1F2F1, #CE2B37);
+    background-image: linear-gradient(to right, #e2001a, #ffec00, #e2001a);
     border_collapse: collapse;
     width: 100%;
   }
@@ -12,7 +12,7 @@ section#sidebar-left {
   float: left;
   width: 15%;
   height: inherit;
-  background-image: linear-gradient(#009246, #F1F2F1 );
+  background-image: linear-gradient(#e2001a, #ffec00 );
   font: {
     size: 0.8em;
     weight: normal;
@@ -26,7 +26,7 @@ section#sidebar-right {
   float: right;
   width: 15%;
   height: inherit;
-  background-image: linear-gradient(#CE2B37, #F1F2F1 );
+  background-image: linear-gradient(#e2001a, #ffec00 );
   font: {
     size: 0.8em;
     weight: normal;
