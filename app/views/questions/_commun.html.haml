@@ -21,12 +21,11 @@
 %br
 %h1=params[:question]
 %h1=text_field_tag 'reponse', '', autocomplete: :off,autofocus: true, disabled: params[:message] != nil
-=button_tag 'à', type: 'button',class: 'accent'
+=button_tag 'á', type: 'button',class: 'accent'
 =button_tag 'é', type: 'button',class: 'accent'
-=button_tag 'è', type: 'button',class: 'accent'
-=button_tag 'ì', type: 'button',class: 'accent'
-=button_tag 'ò', type: 'button',class: 'accent'
-=button_tag 'ù', type: 'button',class: 'accent'
+=button_tag 'í', type: 'button',class: 'accent'
+=button_tag 'ó', type: 'button',class: 'accent'
+=button_tag 'ú', type: 'button',class: 'accent'
 %br
 %br
 -if params[:message] == nil
@@ -34,4 +33,4 @@
 -else
   =button_tag 'Autre question', autofocus: true
 %br
-%p N'oubliez pas les accents, y compris l'accent tonique sauf pour les "parole piane" ! On marque l'accent tonique sur le 'e' par la lettre 'é'.
+%p N'oubliez pas les accents ! Vous pouvez utiliser les accents graves ; ils seront automatiquement convertis.

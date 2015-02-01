@@ -35,6 +35,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
+    category_params['description'].accents_espagnols!
     @category = Category.new(category_params)
 
     respond_to do |format|
@@ -52,6 +53,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1.json
   def update
     respond_to do |format|
+      category_params['description'].accents_espagnols!
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'La catégorie a été mise à jour.' }
         format.json { head :no_content }

@@ -29,7 +29,7 @@
         %th#c
       %tr
       = f.fields_for :formes do |formes_form|
-        -if i/6*6 == i or i == 49
+        -if i/6*6 == i or i == 61
           %tr{class: "#{cycle('pair','impair')}"}
           -texte=Forme::FORMES[i][0]
           %td= formes_form.label :espagnol, if texte.end_with?('.s1') then texte[0..-4] else texte end

@@ -37,6 +37,7 @@ class QuestionsController < ApplicationController
   def verification
 
     if params[:reponse]
+      params[:reponse].accents_espagnols!
       if session[:type] == 'vocabulaire'
         @objet = Mot.find(params[:id])
         @score = @objet.scores_mots.find_by(user_id: current_user.id)
@@ -115,7 +116,7 @@ class QuestionsController < ApplicationController
     end
     params[:id] = @objet.id
     params[:question] = @objet.question_en_francais
-    params[:attendu] = @objet.italien
+    params[:attendu] = @objet.espagnol
   end
 
 end

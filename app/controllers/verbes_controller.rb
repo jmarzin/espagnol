@@ -45,6 +45,10 @@ class VerbesController < ApplicationController
   # POST /verbes
   # POST /verbes.json
   def create
+    verbe_params['formes_attributes'].each do |fa|
+      fa[1]['espagnol'].accents_espagnols!
+    end
+    verbe_params['infinitif'].accents_espagnols!
     @verbe = Verbe.new(verbe_params).reduit(current_user.id)
 
     respond_to do |format|
@@ -74,6 +78,10 @@ class VerbesController < ApplicationController
   # PATCH/PUT /verbes/1.json
   def update
     respond_to do |format|
+      verbe_params['formes_attributes'].each do |fa|
+        fa[1]['espagnol'].accents_espagnols!
+      end
+      verbe_params['infinitif'].accents_espagnols!
       if @verbe.mise_a_jour(verbe_params,current_user.id)
         session[:tableau_formes_ok] = false unless current_user.admin
         format.html { redirect_to @verbe, notice: 'Le verbe a été mis à jour.' }

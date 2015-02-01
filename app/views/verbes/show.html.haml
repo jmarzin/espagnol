@@ -28,9 +28,9 @@
   %tr
     %th#mode
     %th PRESENT
-    %th IMPARFAIT
-    %th IMPERATIF
-    %th CONDITIONNEL
+    %th IMPARFAIT 1
+    %th IMPARFAIT 2
+    %th FUTUR
   %tr
     %td#gras{:rowspan => 11} SUBJONCTIF
     -(0..5).each do |personne|
@@ -44,16 +44,25 @@
       %tr
 %table#verbe3
   %tr
+    %th#mode
+    %th CONDITIONNEL
+    %th IMPERATIF
     %th GERONDIF
     %th PARTICIPE PASSE
-
   %tr
-    -(48..49).each do |rang|
-      -forme = @verbe.formes.find_by(rang_forme: rang)
-      -if forme and forme.espagnol != ''
-        %td=Forme::FORMES[rang][1]+' '+forme.espagnol+' ('+forme.scores_formes.find_by(user_id: @user_eq_id).compteur.to_s+')'
-      -else
-        %td -
+    %td#gras{:rowspan => 11}
+    -(0..5).each do |personne|
+      -(8..11).each do |temps|
+        -rang = temps * 6 + personne
+        -if rang == 61 then rang = 62 elsif rang == 66 then rang = 61 end
+        -if rang < 62
+          -forme = @verbe.formes.find_by(rang_forme: rang)
+          -if forme and forme.espagnol != ''
+            %td=Forme::FORMES[rang][1]+' '+forme.espagnol+' ('+forme.scores_formes.find_by(user_id: @user_eq_id).compteur.to_s+')'
+          -else
+            %td -
+      %tr
+
 = link_to 'Corriger', edit_verbe_path(@verbe)
 \|
 = link_to 'Retour', verbes_path

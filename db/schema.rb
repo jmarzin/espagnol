@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140622134129) do
 
   create_table "formes", force: true do |t|
     t.integer  "rang_forme"
-    t.string   "italien"
+    t.string   "espagnol"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "verbe_id"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140622134129) do
   create_table "mots", force: true do |t|
     t.string   "mot_directeur"
     t.string   "francais"
-    t.string   "italien"
+    t.string   "espagnol"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 20140622134129) do
   end
 
   create_table "traductions", force: true do |t|
-    t.string   "italien"
+    t.string   "espagnol"
     t.string   "francais"
     t.datetime "created_at"
     t.datetime "updated_at"

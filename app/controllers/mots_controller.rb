@@ -51,6 +51,7 @@ class MotsController < ApplicationController
   # POST /mots
   # POST /mots.json
   def create
+    mot_params['espagnol'].accents_espagnols!
     @mot = Mot.new(mot_params)
     @mot.scores_mots[0].category_id = @mot.category_id
 
@@ -72,6 +73,7 @@ class MotsController < ApplicationController
   # PATCH/PUT /mots/1.json
   def update
     respond_to do |format|
+      mot_params['espagnol'].accents_espagnols!
       if @mot.update(mot_params)
         session[:tableau_mots_ok] = false unless current_user.admin
         format.html { redirect_to @mot, notice: 'Le mot a été mis à jour.' }
